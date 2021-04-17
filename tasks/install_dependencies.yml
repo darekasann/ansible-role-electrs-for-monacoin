@@ -1,0 +1,23 @@
+---
+- name: install_dependencies
+  package:
+    name: "{{ item }}"
+    state: latest
+    update_cache: True
+  with_items:
+  - autoconf
+  - automake
+  - build-essential
+  - gcc
+  - git
+  - curl
+  - wget
+  - clang
+  - cmake
+  - cargo
+  - nginx
+  - letsencrypt
+
+- name: package_upgrade
+  package:
+    upgrade: True

@@ -1,0 +1,22 @@
+#main
+
+#Your domain and e-mail address, change here!
+domain: 'example.com'
+email_address: 'monacoin@example.com'
+
+#user and directories
+
+electrum_user: 'electrum'
+electrum_group: 'electrum'
+electrum_uid: '1010'
+electrum_gid: '1010'
+
+working_dir: "/home/{{ electrum_user }}"
+electrum_dir: "{{ working_dir }}/electrs"
+
+#monacoind
+monacoind_download_url: 'https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.17.1/monacoin-0.17.1-x86_64-linux-gnu.tar.gz'
+monacoind_version: 'monacoin-0.17.1-x86_64-linux-gnu.tar.gz'
+
+#electrs
+electrs_git_url: 'https://github.com/wakiyamap/electrs.git'

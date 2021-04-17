@@ -1,0 +1,27 @@
+---
+- name: get_monacoind
+  get_url:
+    url: "{{ monacoind_download_url }}"
+    dest: "{{ working_dir }}/{{ monacoind_version }}"
+
+- name: monacoind_unarchive
+  unarchive:
+    src: "{{ working_dir }}/{{ monacoind_version }}"
+    dest: "{{ working_dir }}/monacoin"
+    remote_src: True
+
+- name: copy_monacoind
+  copy: 
+    src: "{{ working_dir }}/monacoin/bin/monacoind"
+    dest: /usr/local/bin/
+    remote_src: True
+    mode: '0755'
+
+- name: generate_password
+  shell : 'tr -dc A-Za-z0-9_ < /dev/urandom | head -c 8'
+  register: rpc_password
+
+- name: copy_monacoin.conf
+  template:
+    src: monacoin.conf
+    dest: "{{ working_dir }}/.monacoin"

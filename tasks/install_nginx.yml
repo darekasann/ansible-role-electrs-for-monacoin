@@ -1,0 +1,11 @@
+---
+
+- name: copy_nginx.conf
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/
+    owner: root
+    group: root
+
+- name: get_cert
+  command: "certbot -d {{ domain }}  --nginx --email {{ email_address }} --agree-tos --keep-until-expiring --non-interactive"

@@ -1,0 +1,22 @@
+---
+- name: copy_monacoind_service_file
+  template:
+    src: "{{ item }}.service"
+    dest: /etc/systemd/system/
+    owner: root
+    group: root
+  with_items:
+  - monacoind
+  - electrs
+
+- name: start_services
+  systemd:
+    name: "{{ item }}"
+    enabled: True
+    daemon_reload: True
+    state: started
+  with_items:
+  - monacoind
+  - electrs
+
+

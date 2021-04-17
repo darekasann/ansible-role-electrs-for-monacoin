@@ -1,0 +1,22 @@
+---
+- name: clone_electrum
+  git:
+    repo: "{{ electrs_git_url }}"
+    dest: "{{ electrum_dir }}"
+
+- name: make_electrum
+  shell: "cargo build --release"
+  args:
+    chdir: "{{ electrum_dir }}"
+
+- name: mkdir_electrs_data
+  file:
+    path: "{{ working_dir }}/electrs_data"
+    state=directory
+
+- name: chown_electrum_data
+  file:
+    owner: "{{ electrum_user }}"
+    group: "{{ electrum_user }}"
+    path: "{{ working_dir }}"
+    recurse: True

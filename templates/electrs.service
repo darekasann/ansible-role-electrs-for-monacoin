@@ -1,0 +1,20 @@
+[Unit]
+Description=Electrs daemon
+After=network-online.target
+Requires=monacoind.service
+
+[Service]
+WorkingDirectory={{ electrum_dir }}
+ExecStart={{ electrum_dir }}/target/release/electrs --jsonrpc-import --daemon-dir {{ working_dir }}/.monacoin --daemon-rpc-addr ::1:9402 --db-dir {{ electrum_dir }}/electrs_data --electrum-rpc-addr "0.0.0.0:50001"
+User={{ electrum_user }}
+Type=simple
+KillMode=process
+TimeoutSec=60
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=electrs
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+---
+- group:
+    name: "{{ electrum_group }}"
+    gid: "{{ electrum_gid }}"
+    state: present
+
+- user:
+    name: "{{ electrum_user }}"
+    shell: /usr/sbin/nologin
+    home: "{{ working_dir }}"
+    uid: "{{ electrum_uid }}"
+    group: "{{ electrum_group }}"
+    state: present

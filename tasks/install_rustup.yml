@@ -1,0 +1,33 @@
+---
+- name: get_rustup
+  get_url:
+    url: https://sh.rustup.rs
+    dest: "{{ working_dir }}/rustup.sh"
+
+- name: rustup_chmod
+  file:
+    path: "{{ working_dir }}/rustup.sh"
+    mode: "0700"
+
+- name: rust_install
+  shell: "{{ working_dir }}/rustup.sh -y"
+
+- name: rust_copy
+  copy:
+    src: "/root/.cargo/bin/{{ item }}"
+    dest: /usr/local/bin
+    mode: "0755"
+    remote_src: True
+  with_items:
+    - cargo
+    - cargo-fmt
+    - clippy-driver
+    - rustc
+    - rustfmt
+    - rust-lldb
+    - cargo-clippy
+    - cargo-miri
+    - rls
+    - rustdoc
+    - rust-gdb
+    - rustup
