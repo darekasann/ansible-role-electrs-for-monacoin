@@ -3,14 +3,10 @@
 
 - include: create_user.yml
 
-#these can be used for build
 - include: install_dependencies.yml
   tags: update
 
 - include: install_monacoind.yml
-  tags: update
-
-- include: install_nginx.yml
   tags: update
 
 - include: install_rustup.yml
@@ -20,5 +16,8 @@
   tags: update
 
 - include: systemd_setting.yml
+
+- include: install_nginx.yml
+  tags: update
 
 - meta: end_host

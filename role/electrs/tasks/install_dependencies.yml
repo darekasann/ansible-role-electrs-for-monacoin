@@ -16,7 +16,8 @@
   - cmake
   - cargo
   - nginx
-  - letsencrypt
+  - certbot
+  - python3-certbot-nginx
 
 - name: package_upgrade
   package:

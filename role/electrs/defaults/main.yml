@@ -2,7 +2,7 @@
 
 #Your domain and e-mail address, change here!
 domain: 'example.com'
-email_address: 'monacoin@example.com'
+email_address: 'PLAYMONA_is_good@example.com'
 
 #user and directories
 
@@ -16,7 +16,7 @@ electrum_dir: "{{ working_dir }}/electrs"
 
 #monacoind
 monacoind_download_url: 'https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.17.1/monacoin-0.17.1-x86_64-linux-gnu.tar.gz'
-monacoind_version: 'monacoin-0.17.1-x86_64-linux-gnu.tar.gz'
+monacoind_version: 'monacoin-0.17.1'
 
 #electrs
 electrs_git_url: 'https://github.com/wakiyamap/electrs.git'

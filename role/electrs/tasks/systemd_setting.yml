@@ -18,5 +18,4 @@
   with_items:
   - monacoind
   - electrs
-
-
+  - nginx

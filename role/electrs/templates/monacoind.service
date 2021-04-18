@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 WorkingDirectory=/home/electrum/.monacoin
-ExecStart=/home/electrum/monacoin/monacoind
+ExecStart=/usr/local/bin/monacoind
 User=electrum
 Type=simple
 KillMode=process

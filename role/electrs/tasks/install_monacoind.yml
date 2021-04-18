@@ -2,20 +2,25 @@
 - name: get_monacoind
   get_url:
     url: "{{ monacoind_download_url }}"
-    dest: "{{ working_dir }}/{{ monacoind_version }}"
+    dest: "{{ working_dir }}/{{ monacoind_version }}-x86_64-linux-gnu.tar.gz"
 
 - name: monacoind_unarchive
   unarchive:
-    src: "{{ working_dir }}/{{ monacoind_version }}"
-    dest: "{{ working_dir }}/monacoin"
+    src: "{{ working_dir }}/{{ monacoind_version }}-x86_64-linux-gnu.tar.gz"
+    dest: "{{ working_dir }}"
     remote_src: True
 
 - name: copy_monacoind
   copy: 
-    src: "{{ working_dir }}/monacoin/bin/monacoind"
+    src: "{{ working_dir }}/{{ monacoind_version }}/bin/monacoind"
     dest: /usr/local/bin/
     remote_src: True
     mode: '0755'
+
+- name: mkdir_.monacoin
+  file:
+    path: "{{ working_dir }}/.monacoin"
+    state: directory
 
 - name: generate_password
   shell : 'tr -dc A-Za-z0-9_ < /dev/urandom | head -c 8'
@@ -24,4 +29,4 @@
 - name: copy_monacoin.conf
   template:
     src: monacoin.conf
-    dest: "{{ working_dir }}/.monacoin"
+    dest: "{{ working_dir }}/.monacoin/"

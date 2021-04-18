@@ -1,0 +1,27 @@
+---
+- name: get_cert
+  command: "certbot -d {{ domain }}  --nginx --email {{ email_address }} --agree-tos --keep-until-expiring --non-interactive"
+
+- name: copy_nginx.conf
+  blockinfile:
+    path: /etc/nginx/nginx.conf
+    block: "{{ item }}"
+  with_file:
+  - electrum.conf
+
+- name: modify_nginx.conf
+  lineinfile:
+    dest: /etc/nginx/nginx.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+  - regexp: 'ssl_certificate /path/to/example.crt'
+    line: "		ssl_certificate /etc/letsencrypt/live/{{ domain }}/fullchain.pem;"
+  - regexp: 'ssl_certificate_key /path/to/example.key'
+    line: "		ssl_certificate_key /etc/letsencrypt/live/{{ domain }}/privkey.pem;"
+
+- name: restart_nginx
+  systemd:
+    name: nginx
+    enabled: True
+    state: restarted

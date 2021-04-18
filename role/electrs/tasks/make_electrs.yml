@@ -12,7 +12,7 @@
 - name: mkdir_electrs_data
   file:
     path: "{{ working_dir }}/electrs_data"
-    state=directory
+    state: directory
 
 - name: chown_electrum_data
   file:
