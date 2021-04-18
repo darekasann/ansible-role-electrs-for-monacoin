@@ -42,15 +42,15 @@ electrs(Monacoin)用のAnsibleのrole
 
 他のディストリビューションの場合は適宜置き換えてください。
 
-1.AnsibleとGitをインストールする
+1. AnsibleとGitをインストールする
 
 sudo apt install ansible git
 
-2.ファイルをコピーする
+2. ファイルをコピーする
 
 git clone https://github.com/darekasann/ansible-role-electrs-for-monacoin.git
 
-3.設定を変える
+3. 設定を変える
 
 cd ansible-role-electrs-for-monacoin
 
@@ -64,7 +64,7 @@ nano electrs.yml
 
 hosts localhost -> your.domain.com
 
-4.ansibleを実行する
+4. ansibleを実行する
 
 cd ansible-role-electrs-for-monacoin
 
@@ -74,7 +74,7 @@ sudo ansible-playbook electrs.yml
 
 かならずdefault/main.ymlの、domain: 'example.com'のexample.comの部分と、
 
-email_address: 'monacoin@example.com'のmonacoin@example.comの部分を、ご自身のものに変更してください。
+email_address: 'PLAYMONA_is_good@example.com'のPLAYMONA_is_good@example.comの部分を、ご自身のものに変更してください。
 
 また、必要に応じてiptablesやufwでポートを開放したり閉じたりしてください。
 
