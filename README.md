@@ -20,7 +20,13 @@ cd ansible-role-electrs-for-monacoin
 
 nano role/electrs/defaults/main.yml
 
-the, edit domain and email_address.
+Then, edit domain and email_address.
+
+If you install electrs for another host, edit electrs.yml.
+
+nano electrs.yml
+
+hosts: localhost -> your.domain.com
 
 4. Run Ansible
 
@@ -51,6 +57,12 @@ cd ansible-role-electrs-for-monacoin
 nano role/electrs/defaults/main.yml
 
 domainとemail_addressをご自身のものに変更してください。
+
+もし他のホストへインストールする場合は、electrs.ymlのlocalhostの部分を書き換えてください。
+
+nano electrs.yml
+
+hosts localhost -> your.domain.com
 
 4.ansibleを実行する
 
